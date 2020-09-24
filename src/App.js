@@ -3,7 +3,7 @@ import Cards from './components/Cards'
 import Chart from './components/Chart'
 import CountryPicker from './components/CountryPicker'
 import styled from 'styled-components'
-import './App.css'
+import styles from './App.module.css'
 import { fetchData } from './utils/Api'
 
 
@@ -14,6 +14,9 @@ justify-content:center;
 `
 
 class App extends React.Component {
+
+  // created state to bring out data from the scope
+  // of componentDidMount
   state = {
     data: {},
   }
@@ -21,15 +24,16 @@ class App extends React.Component {
   async componentDidMount() {
     const fetchedData = await fetchData();
     this.setState({ data: fetchedData });
+    console.log(fetchedData);
   }
   render(){
     const { data } = this.state; //destructured object here
   return (
-    <Wrap>
+    <div className={styles.container}>
       <Cards data={data}/>
       <CountryPicker/>
       <Chart/>
-    </Wrap>
+    </div>
     );    
   }
 }
