@@ -37,12 +37,12 @@ class App extends React.Component {
   }
 
   render(){
-    const { data } = this.state; //destructured object here
+    const { data, country } = this.state; //destructured object here
   return (
     <div className={styles.container}>
       <Cards data={data}/>
       <CountryPicker handleCountry={this.handleCountry}/>
-      <Chart/>
+      <Chart data={data} country={country}/>
     </div>
     );    
   }
