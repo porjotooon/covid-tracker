@@ -19,6 +19,7 @@ class App extends React.Component {
   // of componentDidMount
   state = {
     data: {},
+    country: '',
   }
 
   async componentDidMount() {
@@ -26,12 +27,19 @@ class App extends React.Component {
     this.setState({ data: fetchedData });
     console.log(fetchedData);
   }
+
+  handleCountry = async (country) => {
+    console.log(country)
+    // fetch data
+    // set state
+  }
+
   render(){
     const { data } = this.state; //destructured object here
   return (
     <div className={styles.container}>
       <Cards data={data}/>
-      <CountryPicker/>
+      <CountryPicker handleCountry={this.handleCountry}/>
       <Chart/>
     </div>
     );    
